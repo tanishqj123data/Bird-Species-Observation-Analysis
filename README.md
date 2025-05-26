@@ -9,9 +9,9 @@ This capstone project explores the distribution and diversity of bird species in
 
 | File | Description |
 |------|-------------|
-| `capstone2_annotated.ipynb` | Jupyter Notebook with full EDA, plots, and explanations |
-| `bird_dashboard.py` | Streamlit app for interactive visualizations |
-| `combined_df.csv` | Dataset combining forest and grassland bird observations |
+| `bird_capstone_2` | Jupyter Notebook with full EDA, plots, and explanations |
+| `dash.py` | Streamlit app for interactive visualizations |
+| `cleaned_combined_df.csv` | Dataset combining forest and grassland bird observations |
 | `README.md` | This documentation file |
 
 ---
@@ -35,10 +35,10 @@ pip install streamlit pandas plotly
 ```
 
 ### ✅ 2. Launch the Dashboard
-Make sure `bird_dashboard.py` and `combined_df.csv` are in the same folder, then run:
+Make sure `dash.py` and `cleaned_combined_df.csv` are in the same folder, then run:
 
 ```bash
-streamlit run bird_dashboard.py
+streamlit run dash.py
 ```
 
 Your browser will open an interactive dashboard where you can filter and explore the data.
