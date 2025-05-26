@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Load data
-combined_df = pd.read_csv(r"C:\Users\tanishq\Desktop\_project2\cleaned_combined_df.csv")
+combined_df = pd.read_csv("cleaned_combined_df.csv")
 
 st.title("Bird Observation Analysis Dashboard")
 
