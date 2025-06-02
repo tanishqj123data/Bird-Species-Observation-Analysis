@@ -8,7 +8,37 @@ combined_df = pd.read_csv("cleaned_combined_df.csv")
 st.title("Bird Observation Analysis Dashboard")
 
 # Sidebar menu
-viz_choice = st.sidebar.selectbox("Select Visualization", ["Bird Count by Name", "Count by Admin Unit & Habitat", "Effect of Factors on Bird Count","Observation Share by Observer"])
+viz_choice = st.sidebar.selectbox("Select Visualization", ["Top Bird Species Table","Bird Count by Name", "Count by Admin Unit & Habitat", "Effect of Factors on Bird Count","Observation Share by Observer"])
+
+##vizualization 0 ===
+# -----
+if viz_choice == "Top Bird Species Table":
+    st.sidebar.header("Filters for Top Bird Species Table")
+
+    # Admin Unit Filter
+    admin_unit_options = combined_df['Admin_Unit_Code'].dropna().unique()
+    selected_admin_units = st.sidebar.multiselect("Select Admin Unit Code(s):", options=admin_unit_options)
+
+    # Habitat Filter
+    habitat_options = combined_df['Habitat_Type'].dropna().unique()
+    selected_habitats = st.sidebar.multiselect("Select Habitat Type(s):", options=habitat_options)
+
+    df_viz5 = combined_df.copy()
+
+    # Apply filters conditionally
+    if selected_admin_units:
+        df_viz5 = df_viz5[df_viz5['Admin_Unit_Code'].isin(selected_admin_units)]
+    
+    if selected_habitats:
+        df_viz5 = df_viz5[df_viz5['Habitat_Type'].isin(selected_habitats)]
+
+    if df_viz5.empty:
+        st.warning("No data available for the selected filters.")
+    else:
+        top_counts = df_viz5['Common_Name'].value_counts().reset_index()
+        top_counts.columns = ['Common_Name', 'Observation_Count']
+        st.subheader("Top Bird Species by Observation Count")
+        st.dataframe(top_counts)
 
 # === Visualization 1 ===
 if viz_choice == "Bird Count by Name":
